@@ -1,5 +1,8 @@
-# Вихідний образ
+# Використання базового образу Nginx
 FROM nginx:alpine
 
-# Копіювання файлів веб-сторінок до папки веб-сервера
-COPY ./html /usr/share/nginx/html
+# Копіювання файлів до папки Nginx
+COPY index.html /usr/share/nginx/html/index.html
+
+# Відкриття порту 80
+EXPOSE 80
