@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Копіювання файлів до папки Nginx
-COPY index.html /usr/share/nginx/html/index.html
+COPY . /usr/share/nginx/html/index.html
 
 # Відкриття порту 80
 EXPOSE 80
