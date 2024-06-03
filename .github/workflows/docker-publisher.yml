@@ -3,11 +3,9 @@ name: CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -16,7 +14,8 @@ jobs:
       - name: Log in to Docker Hub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAM }} --password-stdin
         
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Build Docker image
+        run: docker build -t tymurrozm/lab45 .
+
+      - name: Push Docker image to Docker Hub
+        run: docker push tymurrozm/lab45
